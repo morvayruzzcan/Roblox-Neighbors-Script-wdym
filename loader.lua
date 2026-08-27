@@ -1,0 +1,303 @@
+--[[
+    WDYM · Key System Loader v2.0
+    ═══════════════════════════════════════════════════════════════
+    Features:
+      • Online Key Verification (GitHub Raw / Pastebin / API)
+      • Saved Key Memory (writefile/readfile - auto login)
+      • Metallic Dark Grey 3D Theme matching WDYM Hub
+      • "Get Key" Clipboard Copy Link
+      • Smooth launch animation into WDYM VAMP Script
+    ═══════════════════════════════════════════════════════════════
+--]]
+
+local CoreGui      = game:GetService("CoreGui")
+local TweenService = game:GetService("TweenService")
+local HttpService  = game:GetService("HttpService")
+local Players      = game:GetService("Players")
+
+local lp = Players.LocalPlayer
+
+-- ─────────────────────────────────────────────────────────────
+-- CONFIGURATION
+-- ─────────────────────────────────────────────────────────────
+local CONFIG = {
+    -- 1. Online Key list URL
+    KEYS_API_URL = "https://raw.githubusercontent.com/ruzzcan/Roblox-Neighbors-Script-wdym/main/keys.txt",
+    
+    -- 2. Link where users get their key (Linkvertise / Discord)
+    GET_KEY_LINK = "https://discord.gg/wdym",
+    
+    -- 3. Main Script URL (Raw GitHub link to vamp.lua)
+    MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/ruzzcan/Roblox-Neighbors-Script-wdym/main/vamp.lua",
+    
+    -- Fallback local saved key file name
+    KEY_FILE = "WDYM_Saved_Key.txt"
+}
+
+-- Default fallback valid keys (if HTTP fails or testing offline)
+local HARDCODED_KEYS = {
+    ["WDYM-KEY-2026"] = true,
+    ["WDYM-VIP-8899"] = true,
+    ["VAMP-KEY-FREE"] = true,
+}
+
+-- ─────────────────────────────────────────────────────────────
+-- KEY VALIDATION ENGINE
+-- ─────────────────────────────────────────────────────────────
+local function isKeyValid(inputKey)
+    if not inputKey or inputKey == "" then return false end
+    inputKey = inputKey:gsub("%s+", "") -- trim whitespace
+
+    -- Check local hardcoded keys first
+    if HARDCODED_KEYS[inputKey] then return true end
+
+    -- Check Online API / Raw Keys File
+    local success, response = pcall(function()
+        return game:HttpGet(CONFIG.KEYS_API_URL, true)
+    end)
+
+    if success and response then
+        -- Search for key line by line
+        for line in response:gmatch("[^\r\n]+") do
+            local cleanLine = line:gsub("%s+", "")
+            if cleanLine == inputKey and cleanLine ~= "" then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+local function saveKey(key)
+    pcall(function()
+        if writefile then writefile(CONFIG.KEY_FILE, key) end
+    end)
+end
+
+local function loadSavedKey()
+    local saved = nil
+    pcall(function()
+        if readfile and isfile and isfile(CONFIG.KEY_FILE) then
+            saved = readfile(CONFIG.KEY_FILE)
+        end
+    end)
+    return saved
+end
+
+-- ─────────────────────────────────────────────────────────────
+-- LAUNCH MAIN SCRIPT
+-- ─────────────────────────────────────────────────────────────
+local function launchMainScript()
+    -- Option 1: Execute via game:HttpGet (Production)
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(CONFIG.MAIN_SCRIPT_URL, true))()
+    end)
+
+    -- Option 2: Fallback if running from local file
+    if not success then
+        warn("[WDYM KeySystem] Could not fetch remote script. Running local vamp.lua fallback...")
+        pcall(function()
+            local rawCode = readfile("vamp.lua")
+            if rawCode then loadstring(rawCode)() end
+        end)
+    end
+end
+
+-- Check if saved key is valid on boot
+local savedKey = loadSavedKey()
+if savedKey and isKeyValid(savedKey) then
+    print("[WDYM KeySystem] Valid saved key detected! Auto-logging in...")
+    launchMainScript()
+    return
+end
+
+-- ─────────────────────────────────────────────────────────────
+-- KEY SYSTEM GUI CONSTRUCTION (Metallic Dark Grey Theme)
+-- ─────────────────────────────────────────────────────────────
+pcall(function()
+    local old = CoreGui:FindFirstChild("WDYM_KeySystem_Gui")
+    if old then old:Destroy() end
+end)
+
+local KeyGui = Instance.new("ScreenGui")
+KeyGui.Name = "WDYM_KeySystem_Gui"
+KeyGui.ResetOnSpawn = false
+local parentGui = (gethui and gethui()) or CoreGui
+pcall(function() KeyGui.Parent = parentGui end)
+if not KeyGui.Parent then KeyGui.Parent = lp:WaitForChild("PlayerGui") end
+
+local mainW, mainH = 400, 240
+local keyFrame = Instance.new("Frame")
+keyFrame.Name             = "KeyFrame"
+keyFrame.Size             = UDim2.new(0, mainW, 0, mainH)
+keyFrame.Position         = UDim2.new(0.5, -mainW/2, 0.5, -mainH/2)
+keyFrame.BackgroundColor3 = Color3.fromRGB(16, 17, 22)
+keyFrame.BorderSizePixel  = 0
+keyFrame.ClipsDescendants = true
+keyFrame.Active           = true
+keyFrame.Draggable        = true
+keyFrame.Parent           = KeyGui
+
+local kCorner = Instance.new("UICorner"); kCorner.CornerRadius = UDim.new(0, 8); kCorner.Parent = keyFrame
+local kStroke = Instance.new("UIStroke"); kStroke.Color = Color3.fromRGB(255, 255, 255); kStroke.Thickness = 1.5; kStroke.Parent = keyFrame
+
+-- Top White Border Accent Line
+local topLine = Instance.new("Frame")
+topLine.Size             = UDim2.new(1, 0, 0, 3)
+topLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+topLine.BorderSizePixel  = 0
+topLine.Parent           = keyFrame
+
+-- Header
+local header = Instance.new("Frame")
+header.Size             = UDim2.new(1, 0, 0, 42)
+header.Position         = UDim2.new(0, 0, 0, 3)
+header.BackgroundColor3 = Color3.fromRGB(28, 30, 38)
+header.BorderSizePixel  = 0
+header.Parent           = keyFrame
+
+local titleLbl = Instance.new("TextLabel")
+titleLbl.Size             = UDim2.new(1, -20, 1, 0)
+titleLbl.Position         = UDim2.new(0, 14, 0, 0)
+titleLbl.BackgroundTransparency = 1
+titleLbl.Text             = "WDYM HUB · KEY SYSTEM"
+titleLbl.TextColor3       = Color3.fromRGB(255, 255, 255)
+titleLbl.Font             = Enum.Font.GothamBold
+titleLbl.TextSize         = 14
+titleLbl.TextXAlignment   = Enum.TextXAlignment.Left
+titleLbl.Parent           = header
+
+local subTitle = Instance.new("TextLabel")
+subTitle.Size             = UDim2.new(1, -28, 0, 18)
+subTitle.Position         = UDim2.new(0, 14, 0, 52)
+subTitle.BackgroundTransparency = 1
+subTitle.Text             = "Please enter a valid key to access WDYM VAMP 2.0"
+subTitle.TextColor3       = Color3.fromRGB(190, 195, 205)
+subTitle.Font             = Enum.Font.GothamBold
+subTitle.TextSize         = 10
+subTitle.TextXAlignment   = Enum.TextXAlignment.Left
+subTitle.Parent           = keyFrame
+
+-- Key Input TextBox Panel
+local inputPanel = Instance.new("Frame")
+inputPanel.Size             = UDim2.new(1, -28, 0, 38)
+inputPanel.Position         = UDim2.new(0, 14, 0, 78)
+inputPanel.BackgroundColor3 = Color3.fromRGB(24, 26, 34)
+inputPanel.BorderSizePixel  = 0
+inputPanel.Parent           = keyFrame
+local ipCorner = Instance.new("UICorner"); ipCorner.CornerRadius = UDim.new(0, 6); ipCorner.Parent = inputPanel
+local ipStroke = Instance.new("UIStroke"); ipStroke.Color = Color3.fromRGB(180, 190, 210); ipStroke.Thickness = 1; ipStroke.Parent = inputPanel
+
+local keyInput = Instance.new("TextBox")
+keyInput.Size                   = UDim2.new(1, -16, 1, 0)
+keyInput.Position               = UDim2.new(0, 8, 0, 0)
+keyInput.BackgroundTransparency = 1
+keyInput.PlaceholderText        = "Enter Key Here... (e.g. WDYM-KEY-2026)"
+keyInput.PlaceholderColor3      = Color3.fromRGB(130, 135, 145)
+keyInput.Text                   = ""
+keyInput.TextColor3             = Color3.fromRGB(255, 255, 255)
+keyInput.Font                   = Enum.Font.GothamBold
+keyInput.TextSize               = 11
+keyInput.ClearTextOnFocus       = false
+keyInput.Parent                 = inputPanel
+
+-- Status Message Label
+local statusLbl = Instance.new("TextLabel")
+statusLbl.Size             = UDim2.new(1, -28, 0, 16)
+statusLbl.Position         = UDim2.new(0, 14, 0, 122)
+statusLbl.BackgroundTransparency = 1
+statusLbl.Text             = "Status: Waiting for key input..."
+statusLbl.TextColor3       = Color3.fromRGB(190, 195, 205)
+statusLbl.Font             = Enum.Font.GothamBold
+statusLbl.TextSize         = 9
+statusLbl.TextXAlignment   = Enum.TextXAlignment.Left
+statusLbl.Parent           = keyFrame
+
+-- Buttons Container Row
+local btnRow = Instance.new("Frame")
+btnRow.Size             = UDim2.new(1, -28, 0, 36)
+btnRow.Position         = UDim2.new(0, 14, 0, 150)
+btnRow.BackgroundTransparency = 1
+btnRow.Parent           = keyFrame
+
+-- Submit Key Button
+local submitBtn = Instance.new("TextButton")
+submitBtn.Size             = UDim2.new(0.48, 0, 1, 0)
+submitBtn.Position         = UDim2.new(0, 0, 0, 0)
+submitBtn.BackgroundColor3 = Color3.fromRGB(34, 38, 48)
+submitBtn.BorderSizePixel  = 0
+submitBtn.Text             = "Submit Key"
+submitBtn.TextColor3       = Color3.fromRGB(255, 255, 255)
+submitBtn.Font             = Enum.Font.GothamBold
+submitBtn.TextSize         = 11
+submitBtn.Parent           = btnRow
+
+local sbC = Instance.new("UICorner"); sbC.CornerRadius = UDim.new(0, 6); sbC.Parent = submitBtn
+local sbS = Instance.new("UIStroke"); sbS.Color = Color3.fromRGB(180, 190, 210); sbS.Thickness = 1; sbS.Parent = submitBtn
+local sbG = Instance.new("UIGradient"); sbG.Rotation = 90; sbG.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(54,60,76)), ColorSequenceKeypoint.new(1, Color3.fromRGB(24,26,34))}); sbG.Parent = submitBtn
+
+-- Get Key Button
+local getKeyBtn = Instance.new("TextButton")
+getKeyBtn.Size             = UDim2.new(0.48, 0, 1, 0)
+getKeyBtn.Position         = UDim2.new(0.52, 0, 0, 0)
+getKeyBtn.BackgroundColor3 = Color3.fromRGB(28, 30, 38)
+getKeyBtn.BorderSizePixel  = 0
+getKeyBtn.Text             = "Get Key (Copy Link)"
+getKeyBtn.TextColor3       = Color3.fromRGB(255, 255, 255)
+getKeyBtn.Font             = Enum.Font.GothamBold
+getKeyBtn.TextSize         = 11
+getKeyBtn.Parent           = btnRow
+
+local gkC = Instance.new("UICorner"); gkC.CornerRadius = UDim.new(0, 6); gkC.Parent = getKeyBtn
+local gkS = Instance.new("UIStroke"); gkS.Color = Color3.fromRGB(180, 190, 210); gkS.Thickness = 1; gkS.Parent = getKeyBtn
+
+-- ─────────────────────────────────────────────────────────────
+-- BUTTON INTERACTION LOGIC
+-- ─────────────────────────────────────────────────────────────
+submitBtn.MouseButton1Click:Connect(function()
+    local userKey = keyInput.Text
+    statusLbl.Text = "Status: Verifying key..."
+    statusLbl.TextColor3 = Color3.fromRGB(220, 220, 100)
+
+    task.wait(0.4)
+
+    if isKeyValid(userKey) then
+        statusLbl.Text = "Status: Key Accepted! Launching..."
+        statusLbl.TextColor3 = Color3.fromRGB(100, 240, 120)
+        saveKey(userKey)
+
+        -- Smooth Fade Out Animation
+        TweenService:Create(keyFrame, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+            Position = UDim2.new(0.5, -mainW/2, 0.5, -mainH/2 + 30),
+            BackgroundTransparency = 1
+        }):Play()
+
+        task.wait(0.4)
+        KeyGui:Destroy()
+        launchMainScript()
+    else
+        statusLbl.Text = "Status: Invalid or Expired Key!"
+        statusLbl.TextColor3 = Color3.fromRGB(255, 80, 80)
+        
+        -- Shake effect on input box
+        local origPos = inputPanel.Position
+        for _, offset in ipairs({-6, 6, -4, 4, -2, 2, 0}) do
+            inputPanel.Position = UDim2.new(origPos.X.Scale, origPos.X.Offset + offset, origPos.Y.Scale, origPos.Y.Offset)
+            task.wait(0.03)
+        end
+    end
+end)
+
+getKeyBtn.MouseButton1Click:Connect(function()
+    pcall(function()
+        if setclipboard then
+            setclipboard(CONFIG.GET_KEY_LINK)
+            statusLbl.Text = "Status: Key Link copied to clipboard!"
+            statusLbl.TextColor3 = Color3.fromRGB(100, 200, 255)
+        else
+            statusLbl.Text = "Status: Visit " .. CONFIG.GET_KEY_LINK
+            statusLbl.TextColor3 = Color3.fromRGB(190, 195, 205)
+        end
+    end)
+end)
