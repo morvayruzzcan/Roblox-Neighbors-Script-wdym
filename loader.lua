@@ -1,40 +1,402 @@
---[[ WDYM HUB · PROTECTED SCRIPT ]]--
-local _b64 = "LS1bWwogICAgV0RZTSDCtyBLZXkgU3lzdGVtIExvYWRlciB2Mi4wCiAgICDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZDilZAKICAgIEZlYXR1cmVzOgogICAgICDigKIgT25saW5lIEtleSBWZXJpZmljYXRpb24gKEdpdEh1YiBSYXcgLyBQYXN0ZWJpbiAvIEFQSSkKICAgICAg4oCiIFNhdmVkIEtleSBNZW1vcnkgKHdyaXRlZmlsZS9yZWFkZmlsZSAtIGF1dG8gbG9naW4pCiAgICAgIOKAoiBNZXRhbGxpYyBEYXJrIEdyZXkgM0QgVGhlbWUgbWF0Y2hpbmcgV0RZTSBIdWIKICAgICAg4oCiICJHZXQgS2V5IiBDbGlwYm9hcmQgQ29weSBMaW5rCiAgICAgIOKAoiBTbW9vdGggbGF1bmNoIGFuaW1hdGlvbiBpbnRvIFdEWU0gVkFNUCBTY3JpcHQKICAgIOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkAotLV1dCgpsb2NhbCBDb3JlR3VpICAgICAgPSBnYW1lOkdldFNlcnZpY2UoIkNvcmVHdWkiKQpsb2NhbCBUd2VlblNlcnZpY2UgPSBnYW1lOkdldFNlcnZpY2UoIlR3ZWVuU2VydmljZSIpCmxvY2FsIEh0dHBTZXJ2aWNlICA9IGdhbWU6R2V0U2VydmljZSgiSHR0cFNlcnZpY2UiKQpsb2NhbCBQbGF5ZXJzICAgICAgPSBnYW1lOkdldFNlcnZpY2UoIlBsYXllcnMiKQoKbG9jYWwgbHAgPSBQbGF5ZXJzLkxvY2FsUGxheWVyCgotLSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKLS0gQ09ORklHVVJBVElPTgotLSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKbG9jYWwgQ09ORklHID0gewogICAgLS0gMS4gT25saW5lIEtleSBsaXN0IFVSTCAoVW5saXN0ZWQgUGFzdGViaW4gU2VjcmV0IExpbmspCiAgICBLRVlTX0FQSV9VUkwgPSAiaHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L3YzME1tVE1SIiwKICAgIAogICAgLS0gMi4gTGluayB3aGVyZSB1c2VycyBnZXQgdGhlaXIga2V5IChMaW5rdmVydGlzZSAvIERpc2NvcmQpCiAgICBHRVRfS0VZX0xJTksgPSAiaHR0cHM6Ly9kaXNjb3JkLmdnL25laWdoYm9yc3RyIiwKICAgIAogICAgLS0gMy4gTWFpbiBTY3JpcHQgVVJMIChSYXcgR2l0SHViIGxpbmsgdG8gdmFtcC5sdWEpCiAgICBNQUlOX1NDUklQVF9VUkwgPSAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3J1enpjYW4vUm9ibG94LU5laWdoYm9ycy1TY3JpcHQtd2R5bS9tYWluL3ZhbXAubHVhIiwKICAgIAogICAgLS0gQUxXQVlTIFBST01QVCBLRVk6IElmIHRydWUsIGFza3MgZm9yIGtleSBFVkVSWSBUSU1FIHNjcmlwdCBpcyBleGVjdXRlZCAobm8gYXV0by1sb2dpbikKICAgIEFMV0FZU19QUk9NUFRfS0VZID0gdHJ1ZSwKICAgIAogICAgLS0gRmFsbGJhY2sgbG9jYWwgc2F2ZWQga2V5IGZpbGUgbmFtZQogICAgS0VZX0ZJTEUgPSAiV0RZTV9TYXZlZF9LZXkudHh0Igp9CgotLSBEZWZhdWx0IGZhbGxiYWNrIHZhbGlkIGtleXMgKGlmIEhUVFAgZmFpbHMgb3IgdGVzdGluZyBvZmZsaW5lKQpsb2NhbCBIQVJEQ09ERURfS0VZUyA9IHsKICAgIFsiV0RZTS1LRVktMjAyOSJdID0gdHJ1ZSwKICAgIFsiV0RZTS1WSVAtODg5OSJdID0gdHJ1ZSwKICAgIFsiVkFNUC1LRVktRlJFRSJdID0gdHJ1ZSwKfQoKLS0gTXVsdGktRXhlY3V0b3IgVW5pdmVyc2FsIEhUVFAgRmV0Y2ggKFNvbGFyYSwgWGVubywgVm9sdCwgV2F2ZSwgRGVsdGEsIEh5ZHJvZ2VuKQpsb2NhbCBmdW5jdGlvbiBmZXRjaFVSTCh1cmwpCiAgICBsb2NhbCBjb250ZW50ID0gbmlsCgogICAgLS0gMS4gVHJ5IGdhbWU6SHR0cEdldCBGSVJTVAogICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgIGNvbnRlbnQgPSBnYW1lOkh0dHBHZXQodXJsLCB0cnVlKQogICAgZW5kKQoKICAgIC0tIDIuIEZhbGxiYWNrIHRvIEV4ZWN1dG9yIHJlcXVlc3QgQVBJIGlmIGdhbWU6SHR0cEdldCByZXR1cm5lZCBub3RoaW5nIG9yIGZhaWxlZAogICAgaWYgbm90IGNvbnRlbnQgb3IgI2NvbnRlbnQgPCA1IG9yIGNvbnRlbnQ6ZmluZCgiPCFET0NUWVBFIikgb3IgY29udGVudDpmaW5kKCI8aHRtbCIpIHRoZW4KICAgICAgICBsb2NhbCByZXFGbiA9ICh0eXBlKHJlcXVlc3QpID09ICJmdW5jdGlvbiIgYW5kIHJlcXVlc3QpIAogICAgICAgICAgICAgICAgICAgb3IgKHR5cGUoaHR0cF9yZXF1ZXN0KSA9PSAiZnVuY3Rpb24iIGFuZCBodHRwX3JlcXVlc3QpIAogICAgICAgICAgICAgICAgICAgb3IgKHN5biBhbmQgdHlwZShzeW4ucmVxdWVzdCkgPT0gImZ1bmN0aW9uIiBhbmQgc3luLnJlcXVlc3QpCiAgICAgICAgICAgICAgICAgICBvciAoaHR0cCBhbmQgdHlwZShodHRwLnJlcXVlc3QpID09ICJmdW5jdGlvbiIgYW5kIGh0dHAucmVxdWVzdCkKICAgICAgICAgICAgICAgICAgIAogICAgICAgIGlmIHJlcUZuIHRoZW4KICAgICAgICAgICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgICAgICAgICAgbG9jYWwgcmVzID0gcmVxRm4oe1VybCA9IHVybCwgTWV0aG9kID0gIkdFVCJ9KQogICAgICAgICAgICAgICAgaWYgcmVzIGFuZCByZXMuQm9keSBhbmQgI3Jlcy5Cb2R5ID4gNSB0aGVuCiAgICAgICAgICAgICAgICAgICAgY29udGVudCA9IHJlcy5Cb2R5CiAgICAgICAgICAgICAgICBlbmQKICAgICAgICAgICAgZW5kKQogICAgICAgIGVuZAogICAgZW5kCgogICAgcmV0dXJuIGNvbnRlbnQKZW5kCgotLSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKLS0gS0VZIFZBTElEQVRJT04gRU5HSU5FCi0tIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApsb2NhbCBmdW5jdGlvbiBpc0tleVZhbGlkKGlucHV0S2V5KQogICAgaWYgbm90IGlucHV0S2V5IG9yIGlucHV0S2V5ID09ICIiIHRoZW4gcmV0dXJuIGZhbHNlIGVuZAogICAgaW5wdXRLZXkgPSBpbnB1dEtleTpnc3ViKCIlcysiLCAiIikgLS0gdHJpbSB3aGl0ZXNwYWNlCgogICAgLS0gQ2hlY2sgbG9jYWwgaGFyZGNvZGVkIGtleXMgZmlyc3QKICAgIGlmIEhBUkRDT0RFRF9LRVlTW2lucHV0S2V5XSB0aGVuIHJldHVybiB0cnVlIGVuZAoKICAgIC0tIENoZWNrIE9ubGluZSBBUEkgLyBSYXcgS2V5cyBGaWxlIHZpYSBVbml2ZXJzYWwgSFRUUCBGZXRjaAogICAgbG9jYWwgcmVzcG9uc2UgPSBmZXRjaFVSTChDT05GSUcuS0VZU19BUElfVVJMKQoKICAgIGlmIHJlc3BvbnNlIHRoZW4KICAgICAgICAtLSBTZWFyY2ggZm9yIGtleSBsaW5lIGJ5IGxpbmUKICAgICAgICBmb3IgbGluZSBpbiByZXNwb25zZTpnbWF0Y2goIlteXHJcbl0rIikgZG8KICAgICAgICAgICAgbG9jYWwgY2xlYW5MaW5lID0gbGluZTpnc3ViKCIlcysiLCAiIikKICAgICAgICAgICAgaWYgY2xlYW5MaW5lID09IGlucHV0S2V5IGFuZCBjbGVhbkxpbmUgfj0gIiIgdGhlbgogICAgICAgICAgICAgICAgcmV0dXJuIHRydWUKICAgICAgICAgICAgZW5kCiAgICAgICAgZW5kCiAgICBlbmQKCiAgICByZXR1cm4gZmFsc2UKZW5kCgpsb2NhbCBmdW5jdGlvbiBzYXZlS2V5KGtleSkKICAgIHBjYWxsKGZ1bmN0aW9uKCkKICAgICAgICBpZiB3cml0ZWZpbGUgdGhlbiB3cml0ZWZpbGUoQ09ORklHLktFWV9GSUxFLCBrZXkpIGVuZAogICAgZW5kKQplbmQKCmxvY2FsIGZ1bmN0aW9uIGxvYWRTYXZlZEtleSgpCiAgICBsb2NhbCBzYXZlZCA9IG5pbAogICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgIGlmIHJlYWRmaWxlIGFuZCBpc2ZpbGUgYW5kIGlzZmlsZShDT05GSUcuS0VZX0ZJTEUpIHRoZW4KICAgICAgICAgICAgc2F2ZWQgPSByZWFkZmlsZShDT05GSUcuS0VZX0ZJTEUpCiAgICAgICAgZW5kCiAgICBlbmQpCiAgICByZXR1cm4gc2F2ZWQKZW5kCgotLSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKLS0gTEFVTkNIIE1BSU4gU0NSSVBUCi0tIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApsb2NhbCBzdGF0dXNMYmwgLS0gZm9yd2FyZCBkZWNsYXJhdGlvbiBmb3IgbGl2ZSBzdGF0dXMgdXBkYXRlcwoKbG9jYWwgZnVuY3Rpb24gbGF1bmNoTWFpblNjcmlwdCgpCiAgICBpZiBzdGF0dXNMYmwgdGhlbgogICAgICAgIHN0YXR1c0xibC5UZXh0ID0gIlN0YXR1czogRmV0Y2hpbmcgV0RZTSBIdWIgY29kZS4uLiIKICAgICAgICBzdGF0dXNMYmwuVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDEwMCwgMjAwLCAyNTUpCiAgICBlbmQKCiAgICBsb2NhbCBzY3JpcHRDb250ZW50ID0gZmV0Y2hVUkwoQ09ORklHLk1BSU5fU0NSSVBUX1VSTCkKICAgIGlmIHNjcmlwdENvbnRlbnQgYW5kICNzY3JpcHRDb250ZW50ID4gNTAwIHRoZW4KICAgICAgICBpZiBzdGF0dXNMYmwgdGhlbgogICAgICAgICAgICBzdGF0dXNMYmwuVGV4dCA9ICJTdGF0dXM6IEV4ZWN1dGluZyBXRFlNIEh1Yi4uLiIKICAgICAgICAgICAgc3RhdHVzTGJsLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigxMDAsIDI0MCwgMTIwKQogICAgICAgIGVuZAogICAgICAgIHRhc2sud2FpdCgwLjEpCgogICAgICAgIGxvY2FsIGZ1bmMsIGVyciA9IGxvYWRzdHJpbmcoc2NyaXB0Q29udGVudCkKICAgICAgICBpZiBmdW5jIHRoZW4KICAgICAgICAgICAgbG9jYWwgb2ssIGV4ZWNFcnIgPSBwY2FsbChmdW5jKQogICAgICAgICAgICBpZiBvayB0aGVuCiAgICAgICAgICAgICAgICByZXR1cm4gdHJ1ZQogICAgICAgICAgICBlbHNlCiAgICAgICAgICAgICAgICB3YXJuKCJbV0RZTSBFbmdpbmVdIFJ1bnRpbWUgZXhlY3V0aW9uIGVycm9yIG9uIFhlbm86ICIgLi4gdG9zdHJpbmcoZXhlY0VycikpCiAgICAgICAgICAgICAgICBpZiBzdGF0dXNMYmwgdGhlbgogICAgICAgICAgICAgICAgICAgIHN0YXR1c0xibC5UZXh0ID0gIkVycm9yOiBFeGVjdXRpb24gZmFpbGVkICgiIC4uIHRvc3RyaW5nKGV4ZWNFcnIpOnN1YigxLCA0MCkgLi4gIikiCiAgICAgICAgICAgICAgICAgICAgc3RhdHVzTGJsLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDgwLCA4MCkKICAgICAgICAgICAgICAgIGVuZAogICAgICAgICAgICBlbmQKICAgICAgICBlbHNlCiAgICAgICAgICAgIHdhcm4oIltXRFlNIEVuZ2luZV0gTG9hZHN0cmluZyBzeW50YXggZXJyb3Igb24gWGVubzogIiAuLiB0b3N0cmluZyhlcnIpKQogICAgICAgICAgICBpZiBzdGF0dXNMYmwgdGhlbgogICAgICAgICAgICAgICAgc3RhdHVzTGJsLlRleHQgPSAiRXJyb3I6IFN5bnRheCBlcnJvciAoIiAuLiB0b3N0cmluZyhlcnIpOnN1YigxLCA0MCkgLi4gIikiCiAgICAgICAgICAgICAgICBzdGF0dXNMYmwuVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDI1NSwgODAsIDgwKQogICAgICAgICAgICBlbmQKICAgICAgICBlbmQKICAgIGVsc2UKICAgICAgICB3YXJuKCJbV0RZTSBFbmdpbmVdIEZhaWxlZCB0byBkb3dubG9hZCB2YW1wLmx1YSBmcm9tIEdpdEh1YiIpCiAgICAgICAgaWYgc3RhdHVzTGJsIHRoZW4KICAgICAgICAgICAgc3RhdHVzTGJsLlRleHQgPSAiRXJyb3I6IENvdWxkIG5vdCBkb3dubG9hZCB2YW1wLmx1YSEiCiAgICAgICAgICAgIHN0YXR1c0xibC5UZXh0Q29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjU1LCA4MCwgODApCiAgICAgICAgZW5kCiAgICBlbmQKCiAgICAtLSBGYWxsYmFjayBpZiBIdHRwIGZldGNoIGZhaWxlZAogICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgIGxvY2FsIHJhd0NvZGUgPSByZWFkZmlsZSBhbmQgaXNmaWxlIGFuZCBpc2ZpbGUoInZhbXAubHVhIikgYW5kIHJlYWRmaWxlKCJ2YW1wLmx1YSIpCiAgICAgICAgaWYgcmF3Q29kZSB0aGVuCiAgICAgICAgICAgIGxvY2FsIGYgPSBsb2Fkc3RyaW5nKHJhd0NvZGUpCiAgICAgICAgICAgIGlmIGYgdGhlbiBmKCk7IHJldHVybiB0cnVlIGVuZAogICAgICAgIGVuZAogICAgZW5kKQogICAgcmV0dXJuIGZhbHNlCmVuZAoKLS0gQ2hlY2sgaWYgc2F2ZWQga2V5IGlzIHZhbGlkIG9uIGJvb3QgKFNraXBwZWQgaWYgQUxXQVlTX1BST01QVF9LRVkgaXMgdHJ1ZSkKaWYgbm90IENPTkZJRy5BTFdBWVNfUFJPTVBUX0tFWSB0aGVuCiAgICBsb2NhbCBzYXZlZEtleSA9IGxvYWRTYXZlZEtleSgpCiAgICBpZiBzYXZlZEtleSBhbmQgaXNLZXlWYWxpZChzYXZlZEtleSkgdGhlbgogICAgICAgIHByaW50KCJbV0RZTSBLZXlTeXN0ZW1dIFZhbGlkIHNhdmVkIGtleSBkZXRlY3RlZCEgQXV0by1sb2dnaW5nIGluLi4uIikKICAgICAgICBsYXVuY2hNYWluU2NyaXB0KCkKICAgICAgICByZXR1cm4KICAgIGVuZAplbmQKCi0tIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAotLSBLRVkgU1lTVEVNIEdVSSBDT05TVFJVQ1RJT04gKE1ldGFsbGljIERhcmsgR3JleSBUaGVtZSkKLS0g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACi0tIFNhZmUgY2xlYW51cCAoWGVuby9Tb2xhcmEgc2FmZSwgbm8gQ29yZUd1aSBjcmFzaCkKcGNhbGwoZnVuY3Rpb24oKQogICAgbG9jYWwgcGcgPSBscDpGaW5kRmlyc3RDaGlsZCgiUGxheWVyR3VpIikKICAgIGlmIHBnIHRoZW4KICAgICAgICBsb2NhbCBvbGQgPSBwZzpGaW5kRmlyc3RDaGlsZCgiV0RZTV9LZXlTeXN0ZW1fR3VpIikKICAgICAgICBpZiBvbGQgdGhlbiBvbGQ6RGVzdHJveSgpIGVuZAogICAgZW5kCmVuZCkKcGNhbGwoZnVuY3Rpb24oKQogICAgbG9jYWwgb2xkID0gQ29yZUd1aTpGaW5kRmlyc3RDaGlsZCgiV0RZTV9LZXlTeXN0ZW1fR3VpIikKICAgIGlmIG9sZCB0aGVuIG9sZDpEZXN0cm95KCkgZW5kCmVuZCkKCmxvY2FsIEtleUd1aSA9IEluc3RhbmNlLm5ldygiU2NyZWVuR3VpIikKS2V5R3VpLk5hbWUgPSAiV0RZTV9LZXlTeXN0ZW1fR3VpIgpLZXlHdWkuUmVzZXRPblNwYXduID0gZmFsc2UKS2V5R3VpLkRpc3BsYXlPcmRlciA9IDk5OTk5OQpLZXlHdWkuRW5hYmxlZCA9IHRydWUKCi0tIFBsYXllckd1aSBGSVJTVCDigJQgd29ya3Mgb24gMTAwJSBvZiBleGVjdXRvcnMgKFhlbm8sIFNvbGFyYSwgVm9sdCwgV2F2ZSwgRGVsdGEpCmxvY2FsIF9rZXlHdWlQYXJlbnRlZCA9IGZhbHNlCnBjYWxsKGZ1bmN0aW9uKCkKICAgIGxvY2FsIHBnID0gbHA6V2FpdEZvckNoaWxkKCJQbGF5ZXJHdWkiLCAzKQogICAgaWYgcGcgdGhlbgogICAgICAgIEtleUd1aS5QYXJlbnQgPSBwZwogICAgICAgIF9rZXlHdWlQYXJlbnRlZCA9IChLZXlHdWkuUGFyZW50IH49IG5pbCkKICAgIGVuZAplbmQpCmlmIG5vdCBfa2V5R3VpUGFyZW50ZWQgdGhlbgogICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgIGlmIHR5cGUoZ2V0aHVpKSA9PSAiZnVuY3Rpb24iIHRoZW4KICAgICAgICAgICAgbG9jYWwgaHVpID0gZ2V0aHVpKCkKICAgICAgICAgICAgaWYgaHVpIHRoZW4gS2V5R3VpLlBhcmVudCA9IGh1aTsgX2tleUd1aVBhcmVudGVkID0gdHJ1ZSBlbmQKICAgICAgICBlbmQKICAgIGVuZCkKZW5kCmlmIG5vdCBfa2V5R3VpUGFyZW50ZWQgdGhlbgogICAgcGNhbGwoZnVuY3Rpb24oKSBLZXlHdWkuUGFyZW50ID0gQ29yZUd1aSBlbmQpCmVuZAoKbG9jYWwgbWFpblcsIG1haW5IID0gNDAwLCAyNDAKbG9jYWwga2V5RnJhbWUgPSBJbnN0YW5jZS5uZXcoIkZyYW1lIikKa2V5RnJhbWUuTmFtZSAgICAgICAgICAgICA9ICJLZXlGcmFtZSIKa2V5RnJhbWUuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygwLCBtYWluVywgMCwgbWFpbkgpCmtleUZyYW1lLlBvc2l0aW9uICAgICAgICAgPSBVRGltMi5uZXcoMC41LCAtbWFpblcvMiwgMC41LCAtbWFpbkgvMikKa2V5RnJhbWUuQmFja2dyb3VuZENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDE2LCAxNywgMjIpCmtleUZyYW1lLkJvcmRlclNpemVQaXhlbCAgPSAwCmtleUZyYW1lLkNsaXBzRGVzY2VuZGFudHMgPSB0cnVlCmtleUZyYW1lLkFjdGl2ZSAgICAgICAgICAgPSB0cnVlCmtleUZyYW1lLkRyYWdnYWJsZSAgICAgICAgPSB0cnVlCmtleUZyYW1lLlBhcmVudCAgICAgICAgICAgPSBLZXlHdWkKCmxvY2FsIGtDb3JuZXIgPSBJbnN0YW5jZS5uZXcoIlVJQ29ybmVyIik7IGtDb3JuZXIuQ29ybmVyUmFkaXVzID0gVURpbS5uZXcoMCwgOCk7IGtDb3JuZXIuUGFyZW50ID0ga2V5RnJhbWUKbG9jYWwga1N0cm9rZSA9IEluc3RhbmNlLm5ldygiVUlTdHJva2UiKTsga1N0cm9rZS5Db2xvciA9IENvbG9yMy5mcm9tUkdCKDI1NSwgMjU1LCAyNTUpOyBrU3Ryb2tlLlRoaWNrbmVzcyA9IDEuNTsga1N0cm9rZS5QYXJlbnQgPSBrZXlGcmFtZQoKLS0gVG9wIFdoaXRlIEJvcmRlciBBY2NlbnQgTGluZQpsb2NhbCB0b3BMaW5lID0gSW5zdGFuY2UubmV3KCJGcmFtZSIpCnRvcExpbmUuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAwLCAwLCAzKQp0b3BMaW5lLkJhY2tncm91bmRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KQp0b3BMaW5lLkJvcmRlclNpemVQaXhlbCAgPSAwCnRvcExpbmUuUGFyZW50ICAgICAgICAgICA9IGtleUZyYW1lCgotLSBIZWFkZXIKbG9jYWwgaGVhZGVyID0gSW5zdGFuY2UubmV3KCJGcmFtZSIpCmhlYWRlci5TaXplICAgICAgICAgICAgID0gVURpbTIubmV3KDEsIDAsIDAsIDQyKQpoZWFkZXIuUG9zaXRpb24gICAgICAgICA9IFVEaW0yLm5ldygwLCAwLCAwLCAzKQpoZWFkZXIuQmFja2dyb3VuZENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDI4LCAzMCwgMzgpCmhlYWRlci5Cb3JkZXJTaXplUGl4ZWwgID0gMApoZWFkZXIuUGFyZW50ICAgICAgICAgICA9IGtleUZyYW1lCgpsb2NhbCB0aXRsZUxibCA9IEluc3RhbmNlLm5ldygiVGV4dExhYmVsIikKdGl0bGVMYmwuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAtMjAsIDEsIDApCnRpdGxlTGJsLlBvc2l0aW9uICAgICAgICAgPSBVRGltMi5uZXcoMCwgMTQsIDAsIDApCnRpdGxlTGJsLkJhY2tncm91bmRUcmFuc3BhcmVuY3kgPSAxCnRpdGxlTGJsLlRleHQgICAgICAgICAgICAgPSAiV0RZTSBIVUIgwrcgS0VZIFNZU1RFTSIKdGl0bGVMYmwuVGV4dENvbG9yMyAgICAgICA9IENvbG9yMy5mcm9tUkdCKDI1NSwgMjU1LCAyNTUpCnRpdGxlTGJsLkZvbnQgICAgICAgICAgICAgPSBFbnVtLkZvbnQuR290aGFtQm9sZAp0aXRsZUxibC5UZXh0U2l6ZSAgICAgICAgID0gMTQKdGl0bGVMYmwuVGV4dFhBbGlnbm1lbnQgICA9IEVudW0uVGV4dFhBbGlnbm1lbnQuTGVmdAp0aXRsZUxibC5QYXJlbnQgICAgICAgICAgID0gaGVhZGVyCgpsb2NhbCBzdWJUaXRsZSA9IEluc3RhbmNlLm5ldygiVGV4dExhYmVsIikKc3ViVGl0bGUuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAtMjgsIDAsIDE4KQpzdWJUaXRsZS5Qb3NpdGlvbiAgICAgICAgID0gVURpbTIubmV3KDAsIDE0LCAwLCA1MikKc3ViVGl0bGUuQmFja2dyb3VuZFRyYW5zcGFyZW5jeSA9IDEKc3ViVGl0bGUuVGV4dCAgICAgICAgICAgICA9ICJQbGVhc2UgZW50ZXIgYSB2YWxpZCBrZXkgdG8gYWNjZXNzIFdEWU0gVkFNUCAyLjAiCnN1YlRpdGxlLlRleHRDb2xvcjMgICAgICAgPSBDb2xvcjMuZnJvbVJHQigxOTAsIDE5NSwgMjA1KQpzdWJUaXRsZS5Gb250ICAgICAgICAgICAgID0gRW51bS5Gb250LkdvdGhhbUJvbGQKc3ViVGl0bGUuVGV4dFNpemUgICAgICAgICA9IDEwCnN1YlRpdGxlLlRleHRYQWxpZ25tZW50ICAgPSBFbnVtLlRleHRYQWxpZ25tZW50LkxlZnQKc3ViVGl0bGUuUGFyZW50ICAgICAgICAgICA9IGtleUZyYW1lCgotLSBLZXkgSW5wdXQgVGV4dEJveCBQYW5lbApsb2NhbCBpbnB1dFBhbmVsID0gSW5zdGFuY2UubmV3KCJGcmFtZSIpCmlucHV0UGFuZWwuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAtMjgsIDAsIDM4KQppbnB1dFBhbmVsLlBvc2l0aW9uICAgICAgICAgPSBVRGltMi5uZXcoMCwgMTQsIDAsIDc4KQppbnB1dFBhbmVsLkJhY2tncm91bmRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNCwgMjYsIDM0KQppbnB1dFBhbmVsLkJvcmRlclNpemVQaXhlbCAgPSAwCmlucHV0UGFuZWwuUGFyZW50ICAgICAgICAgICA9IGtleUZyYW1lCmxvY2FsIGlwQ29ybmVyID0gSW5zdGFuY2UubmV3KCJVSUNvcm5lciIpOyBpcENvcm5lci5Db3JuZXJSYWRpdXMgPSBVRGltLm5ldygwLCA2KTsgaXBDb3JuZXIuUGFyZW50ID0gaW5wdXRQYW5lbApsb2NhbCBpcFN0cm9rZSA9IEluc3RhbmNlLm5ldygiVUlTdHJva2UiKTsgaXBTdHJva2UuQ29sb3IgPSBDb2xvcjMuZnJvbVJHQigxODAsIDE5MCwgMjEwKTsgaXBTdHJva2UuVGhpY2tuZXNzID0gMTsgaXBTdHJva2UuUGFyZW50ID0gaW5wdXRQYW5lbAoKbG9jYWwga2V5SW5wdXQgPSBJbnN0YW5jZS5uZXcoIlRleHRCb3giKQprZXlJbnB1dC5TaXplICAgICAgICAgICAgICAgICAgID0gVURpbTIubmV3KDEsIC0xNiwgMSwgMCkKa2V5SW5wdXQuUG9zaXRpb24gICAgICAgICAgICAgICA9IFVEaW0yLm5ldygwLCA4LCAwLCAwKQprZXlJbnB1dC5CYWNrZ3JvdW5kVHJhbnNwYXJlbmN5ID0gMQprZXlJbnB1dC5QbGFjZWhvbGRlclRleHQgICAgICAgID0gIkVudGVyIEtleSBIZXJlLi4uIChlLmcuIFdEWU0tS0VZLSoqKiopIgprZXlJbnB1dC5QbGFjZWhvbGRlckNvbG9yMyAgICAgID0gQ29sb3IzLmZyb21SR0IoMTMwLCAxMzUsIDE0NSkKa2V5SW5wdXQuVGV4dCAgICAgICAgICAgICAgICAgICA9ICIiCmtleUlucHV0LlRleHRDb2xvcjMgICAgICAgICAgICAgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KQprZXlJbnB1dC5Gb250ICAgICAgICAgICAgICAgICAgID0gRW51bS5Gb250LkdvdGhhbUJvbGQKa2V5SW5wdXQuVGV4dFNpemUgICAgICAgICAgICAgICA9IDExCmtleUlucHV0LkNsZWFyVGV4dE9uRm9jdXMgICAgICAgPSBmYWxzZQprZXlJbnB1dC5QYXJlbnQgICAgICAgICAgICAgICAgID0gaW5wdXRQYW5lbAoKLS0gU3RhdHVzIE1lc3NhZ2UgTGFiZWwKbG9jYWwgc3RhdHVzTGJsID0gSW5zdGFuY2UubmV3KCJUZXh0TGFiZWwiKQpzdGF0dXNMYmwuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAtMjgsIDAsIDE2KQpzdGF0dXNMYmwuUG9zaXRpb24gICAgICAgICA9IFVEaW0yLm5ldygwLCAxNCwgMCwgMTIyKQpzdGF0dXNMYmwuQmFja2dyb3VuZFRyYW5zcGFyZW5jeSA9IDEKc3RhdHVzTGJsLlRleHQgICAgICAgICAgICAgPSAiU3RhdHVzOiBXYWl0aW5nIGZvciBrZXkgaW5wdXQuLi4iCnN0YXR1c0xibC5UZXh0Q29sb3IzICAgICAgID0gQ29sb3IzLmZyb21SR0IoMTkwLCAxOTUsIDIwNSkKc3RhdHVzTGJsLkZvbnQgICAgICAgICAgICAgPSBFbnVtLkZvbnQuR290aGFtQm9sZApzdGF0dXNMYmwuVGV4dFNpemUgICAgICAgICA9IDkKc3RhdHVzTGJsLlRleHRYQWxpZ25tZW50ICAgPSBFbnVtLlRleHRYQWxpZ25tZW50LkxlZnQKc3RhdHVzTGJsLlBhcmVudCAgICAgICAgICAgPSBrZXlGcmFtZQoKLS0gQnV0dG9ucyBDb250YWluZXIgUm93CmxvY2FsIGJ0blJvdyA9IEluc3RhbmNlLm5ldygiRnJhbWUiKQpidG5Sb3cuU2l6ZSAgICAgICAgICAgICA9IFVEaW0yLm5ldygxLCAtMjgsIDAsIDM2KQpidG5Sb3cuUG9zaXRpb24gICAgICAgICA9IFVEaW0yLm5ldygwLCAxNCwgMCwgMTUwKQpidG5Sb3cuQmFja2dyb3VuZFRyYW5zcGFyZW5jeSA9IDEKYnRuUm93LlBhcmVudCAgICAgICAgICAgPSBrZXlGcmFtZQoKLS0gU3VibWl0IEtleSBCdXR0b24KbG9jYWwgc3VibWl0QnRuID0gSW5zdGFuY2UubmV3KCJUZXh0QnV0dG9uIikKc3VibWl0QnRuLlNpemUgICAgICAgICAgICAgPSBVRGltMi5uZXcoMC40OCwgMCwgMSwgMCkKc3VibWl0QnRuLlBvc2l0aW9uICAgICAgICAgPSBVRGltMi5uZXcoMCwgMCwgMCwgMCkKc3VibWl0QnRuLkJhY2tncm91bmRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigzNCwgMzgsIDQ4KQpzdWJtaXRCdG4uQm9yZGVyU2l6ZVBpeGVsICA9IDAKc3VibWl0QnRuLlRleHQgICAgICAgICAgICAgPSAiU3VibWl0IEtleSIKc3VibWl0QnRuLlRleHRDb2xvcjMgICAgICAgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KQpzdWJtaXRCdG4uRm9udCAgICAgICAgICAgICA9IEVudW0uRm9udC5Hb3RoYW1Cb2xkCnN1Ym1pdEJ0bi5UZXh0U2l6ZSAgICAgICAgID0gMTEKc3VibWl0QnRuLlBhcmVudCAgICAgICAgICAgPSBidG5Sb3cKCmxvY2FsIHNiQyA9IEluc3RhbmNlLm5ldygiVUlDb3JuZXIiKTsgc2JDLkNvcm5lclJhZGl1cyA9IFVEaW0ubmV3KDAsIDYpOyBzYkMuUGFyZW50ID0gc3VibWl0QnRuCmxvY2FsIHNiUyA9IEluc3RhbmNlLm5ldygiVUlTdHJva2UiKTsgc2JTLkNvbG9yID0gQ29sb3IzLmZyb21SR0IoMTgwLCAxOTAsIDIxMCk7IHNiUy5UaGlja25lc3MgPSAxOyBzYlMuUGFyZW50ID0gc3VibWl0QnRuCmxvY2FsIHNiRyA9IEluc3RhbmNlLm5ldygiVUlHcmFkaWVudCIpOyBzYkcuUm90YXRpb24gPSA5MDsgc2JHLkNvbG9yID0gQ29sb3JTZXF1ZW5jZS5uZXcoe0NvbG9yU2VxdWVuY2VLZXlwb2ludC5uZXcoMCwgQ29sb3IzLmZyb21SR0IoNTQsNjAsNzYpKSwgQ29sb3JTZXF1ZW5jZUtleXBvaW50Lm5ldygxLCBDb2xvcjMuZnJvbVJHQigyNCwyNiwzNCkpfSk7IHNiRy5QYXJlbnQgPSBzdWJtaXRCdG4KCi0tIEdldCBLZXkgQnV0dG9uCmxvY2FsIGdldEtleUJ0biA9IEluc3RhbmNlLm5ldygiVGV4dEJ1dHRvbiIpCmdldEtleUJ0bi5TaXplICAgICAgICAgICAgID0gVURpbTIubmV3KDAuNDgsIDAsIDEsIDApCmdldEtleUJ0bi5Qb3NpdGlvbiAgICAgICAgID0gVURpbTIubmV3KDAuNTIsIDAsIDAsIDApCmdldEtleUJ0bi5CYWNrZ3JvdW5kQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjgsIDMwLCAzOCkKZ2V0S2V5QnRuLkJvcmRlclNpemVQaXhlbCAgPSAwCmdldEtleUJ0bi5UZXh0ICAgICAgICAgICAgID0gIkdldCBLZXkgKENvcHkgTGluaykiCmdldEtleUJ0bi5UZXh0Q29sb3IzICAgICAgID0gQ29sb3IzLmZyb21SR0IoMjU1LCAyNTUsIDI1NSkKZ2V0S2V5QnRuLkZvbnQgICAgICAgICAgICAgPSBFbnVtLkZvbnQuR290aGFtQm9sZApnZXRLZXlCdG4uVGV4dFNpemUgICAgICAgICA9IDExCmdldEtleUJ0bi5QYXJlbnQgICAgICAgICAgID0gYnRuUm93Cgpsb2NhbCBna0MgPSBJbnN0YW5jZS5uZXcoIlVJQ29ybmVyIik7IGdrQy5Db3JuZXJSYWRpdXMgPSBVRGltLm5ldygwLCA2KTsgZ2tDLlBhcmVudCA9IGdldEtleUJ0bgpsb2NhbCBna1MgPSBJbnN0YW5jZS5uZXcoIlVJU3Ryb2tlIik7IGdrUy5Db2xvciA9IENvbG9yMy5mcm9tUkdCKDE4MCwgMTkwLCAyMTApOyBna1MuVGhpY2tuZXNzID0gMTsgZ2tTLlBhcmVudCA9IGdldEtleUJ0bgoKLS0g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACi0tIEJVVFRPTiBJTlRFUkFDVElPTiBMT0dJQwotLSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKc3VibWl0QnRuLk1vdXNlQnV0dG9uMUNsaWNrOkNvbm5lY3QoZnVuY3Rpb24oKQogICAgbG9jYWwgdXNlcktleSA9IGtleUlucHV0LlRleHQKICAgIHN0YXR1c0xibC5UZXh0ID0gIlN0YXR1czogVmVyaWZ5aW5nIGtleS4uLiIKICAgIHN0YXR1c0xibC5UZXh0Q29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjIwLCAyMjAsIDEwMCkKCiAgICB0YXNrLndhaXQoMC4yKQoKICAgIGlmIGlzS2V5VmFsaWQodXNlcktleSkgdGhlbgogICAgICAgIHN0YXR1c0xibC5UZXh0ID0gIlN0YXR1czogS2V5IEFjY2VwdGVkISBMYXVuY2hpbmcgSHViLi4uIgogICAgICAgIHN0YXR1c0xibC5UZXh0Q29sb3IzID0gQ29sb3IzLmZyb21SR0IoMTAwLCAyNDAsIDEyMCkKICAgICAgICBzYXZlS2V5KHVzZXJLZXkpCgogICAgICAgIHRhc2suc3Bhd24oZnVuY3Rpb24oKQogICAgICAgICAgICBsYXVuY2hNYWluU2NyaXB0KCkKICAgICAgICBlbmQpCiAgICAgICAgCiAgICAgICAgVHdlZW5TZXJ2aWNlOkNyZWF0ZShrZXlGcmFtZSwgVHdlZW5JbmZvLm5ldygwLjQsIEVudW0uRWFzaW5nU3R5bGUuUXVhcnQsIEVudW0uRWFzaW5nRGlyZWN0aW9uLk91dCksIHsKICAgICAgICAgICAgUG9zaXRpb24gPSBVRGltMi5uZXcoMC41LCAtbWFpblcvMiwgMC41LCAtbWFpbkgvMiArIDMwKSwKICAgICAgICAgICAgQmFja2dyb3VuZFRyYW5zcGFyZW5jeSA9IDEKICAgICAgICB9KTpQbGF5KCkKICAgICAgICB0YXNrLndhaXQoMC40KQogICAgICAgIHBjYWxsKGZ1bmN0aW9uKCkgS2V5R3VpOkRlc3Ryb3koKSBlbmQpCiAgICBlbHNlCiAgICAgICAgc3RhdHVzTGJsLlRleHQgPSAiU3RhdHVzOiBJbnZhbGlkIG9yIEV4cGlyZWQgS2V5ISIKICAgICAgICBzdGF0dXNMYmwuVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDI1NSwgODAsIDgwKQogICAgICAgIAogICAgICAgIC0tIFNoYWtlIGVmZmVjdCBvbiBpbnB1dCBib3gKICAgICAgICBsb2NhbCBvcmlnUG9zID0gaW5wdXRQYW5lbC5Qb3NpdGlvbgogICAgICAgIGZvciBfLCBvZmZzZXQgaW4gaXBhaXJzKHstNiwgNiwgLTQsIDQsIC0yLCAyLCAwfSkgZG8KICAgICAgICAgICAgaW5wdXRQYW5lbC5Qb3NpdGlvbiA9IFVEaW0yLm5ldyhvcmlnUG9zLlguU2NhbGUsIG9yaWdQb3MuWC5PZmZzZXQgKyBvZmZzZXQsIG9yaWdQb3MuWS5TY2FsZSwgb3JpZ1Bvcy5ZLk9mZnNldCkKICAgICAgICAgICAgdGFzay53YWl0KDAuMDMpCiAgICAgICAgZW5kCiAgICBlbmQKZW5kKQoKZ2V0S2V5QnRuLk1vdXNlQnV0dG9uMUNsaWNrOkNvbm5lY3QoZnVuY3Rpb24oKQogICAgcGNhbGwoZnVuY3Rpb24oKQogICAgICAgIGlmIHNldGNsaXBib2FyZCB0aGVuCiAgICAgICAgICAgIHNldGNsaXBib2FyZChDT05GSUcuR0VUX0tFWV9MSU5LKQogICAgICAgICAgICBzdGF0dXNMYmwuVGV4dCA9ICJTdGF0dXM6IEtleSBMaW5rIGNvcGllZCB0byBjbGlwYm9hcmQhIgogICAgICAgICAgICBzdGF0dXNMYmwuVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDEwMCwgMjAwLCAyNTUpCiAgICAgICAgZWxzZQogICAgICAgICAgICBzdGF0dXNMYmwuVGV4dCA9ICJTdGF0dXM6IFZpc2l0ICIgLi4gQ09ORklHLkdFVF9LRVlfTElOSwogICAgICAgICAgICBzdGF0dXNMYmwuVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDE5MCwgMTk1LCAyMDUpCiAgICAgICAgZW5kCiAgICBlbmQpCmVuZCkK"
+--[[
+    WDYM · Key System Loader v2.0
+    ═══════════════════════════════════════════════════════════════
+    Features:
+      • Online Key Verification (GitHub Raw / Pastebin / API)
+      • Saved Key Memory (writefile/readfile - auto login)
+      • Metallic Dark Grey 3D Theme matching WDYM Hub
+      • "Get Key" Clipboard Copy Link
+      • Smooth launch animation into WDYM VAMP Script
+    ═══════════════════════════════════════════════════════════════
+--]]
 
-local function _decode(s)
-    local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-    local t = {}
-    for i = 1, #b do t[b:sub(i,i)] = i - 1 end
-    local res = {}
-    local idx = 1
-    s = s:gsub('[^A-Za-z0-9%+/=]', '')
-    for i = 1, #s, 4 do
-        local c1 = t[s:sub(i,i)] or 0
-        local c2 = t[s:sub(i+1,i+1)] or 0
-        local c3 = t[s:sub(i+2,i+2)] or 0
-        local c4 = t[s:sub(i+3,i+3)] or 0
+local CoreGui      = game:GetService("CoreGui")
+local TweenService = game:GetService("TweenService")
+local HttpService  = game:GetService("HttpService")
+local Players      = game:GetService("Players")
+
+local lp = Players.LocalPlayer
+
+-- ─────────────────────────────────────────────────────────────
+-- CONFIGURATION
+-- ─────────────────────────────────────────────────────────────
+local CONFIG = {
+    -- 1. Online Key list URL (Unlisted Pastebin Secret Link)
+    KEYS_API_URL = "https://pastebin.com/raw/v30MmTMR",
+    
+    -- 2. Link where users get their key (Linkvertise / Discord)
+    GET_KEY_LINK = "https://discord.gg/neighborstr",
+    
+    -- 3. Main Script URL (Raw GitHub link to vamp.lua)
+    MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/ruzzcan/Roblox-Neighbors-Script-wdym/main/vamp.lua",
+    
+    -- ALWAYS PROMPT KEY: If true, asks for key EVERY TIME script is executed (no auto-login)
+    ALWAYS_PROMPT_KEY = true,
+    
+    -- Fallback local saved key file name
+    KEY_FILE = "WDYM_Saved_Key.txt"
+}
+
+-- Default fallback valid keys (if HTTP fails or testing offline)
+local HARDCODED_KEYS = {
+    ["WDYM-KEY-2029"] = true,
+    ["WDYM-VIP-8899"] = true,
+    ["VAMP-KEY-FREE"] = true,
+}
+
+-- Multi-Executor Universal HTTP Fetch (Solara, Xeno, Volt, Wave, Delta, Hydrogen)
+local function fetchURL(url)
+    local content = nil
+
+    -- 1. Try game:HttpGet FIRST
+    pcall(function()
+        content = game:HttpGet(url, true)
+    end)
+
+    -- 2. Fallback to Executor request API if game:HttpGet returned nothing or failed
+    if not content or #content < 5 or content:find("<!DOCTYPE") or content:find("<html") then
+        local reqFn = (type(request) == "function" and request) 
+                   or (type(http_request) == "function" and http_request) 
+                   or (syn and type(syn.request) == "function" and syn.request)
+                   or (http and type(http.request) == "function" and http.request)
+                   
+        if reqFn then
+            pcall(function()
+                local res = reqFn({Url = url, Method = "GET"})
+                if res and res.Body and #res.Body > 5 then
+                    content = res.Body
+                end
+            end)
+        end
+    end
+
+    return content
+end
+
+-- ─────────────────────────────────────────────────────────────
+-- KEY VALIDATION ENGINE
+-- ─────────────────────────────────────────────────────────────
+local function isKeyValid(inputKey)
+    if not inputKey or inputKey == "" then return false end
+    inputKey = inputKey:gsub("%s+", "") -- trim whitespace
+
+    -- Check local hardcoded keys first
+    if HARDCODED_KEYS[inputKey] then return true end
+
+    -- Check Online API / Raw Keys File via Universal HTTP Fetch
+    local response = fetchURL(CONFIG.KEYS_API_URL)
+
+    if response then
+        -- Search for key line by line
+        for line in response:gmatch("[^\r\n]+") do
+            local cleanLine = line:gsub("%s+", "")
+            if cleanLine == inputKey and cleanLine ~= "" then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+local function saveKey(key)
+    pcall(function()
+        if writefile then writefile(CONFIG.KEY_FILE, key) end
+    end)
+end
+
+local function loadSavedKey()
+    local saved = nil
+    pcall(function()
+        if readfile and isfile and isfile(CONFIG.KEY_FILE) then
+            saved = readfile(CONFIG.KEY_FILE)
+        end
+    end)
+    return saved
+end
+
+-- ─────────────────────────────────────────────────────────────
+-- LAUNCH MAIN SCRIPT
+-- ─────────────────────────────────────────────────────────────
+local statusLbl -- forward declaration for live status updates
+
+local function launchMainScript()
+    if statusLbl then
+        statusLbl.Text = "Status: Fetching WDYM Hub code..."
+        statusLbl.TextColor3 = Color3.fromRGB(100, 200, 255)
+    end
+
+    local scriptContent = fetchURL(CONFIG.MAIN_SCRIPT_URL)
+    if scriptContent and #scriptContent > 500 then
+        if statusLbl then
+            statusLbl.Text = "Status: Executing WDYM Hub..."
+            statusLbl.TextColor3 = Color3.fromRGB(100, 240, 120)
+        end
+        task.wait(0.1)
+
+        local func, err = loadstring(scriptContent)
+        if func then
+            local ok, execErr = pcall(func)
+            if ok then
+                return true
+            else
+                warn("[WDYM Engine] Runtime execution error on Xeno: " .. tostring(execErr))
+                if statusLbl then
+                    statusLbl.Text = "Error: Execution failed (" .. tostring(execErr):sub(1, 40) .. ")"
+                    statusLbl.TextColor3 = Color3.fromRGB(255, 80, 80)
+                end
+            end
+        else
+            warn("[WDYM Engine] Loadstring syntax error on Xeno: " .. tostring(err))
+            if statusLbl then
+                statusLbl.Text = "Error: Syntax error (" .. tostring(err):sub(1, 40) .. ")"
+                statusLbl.TextColor3 = Color3.fromRGB(255, 80, 80)
+            end
+        end
+    else
+        warn("[WDYM Engine] Failed to download vamp.lua from GitHub")
+        if statusLbl then
+            statusLbl.Text = "Error: Could not download vamp.lua!"
+            statusLbl.TextColor3 = Color3.fromRGB(255, 80, 80)
+        end
+    end
+
+    -- Fallback if Http fetch failed
+    pcall(function()
+        local rawCode = readfile and isfile and isfile("vamp.lua") and readfile("vamp.lua")
+        if rawCode then
+            local f = loadstring(rawCode)
+            if f then f(); return true end
+        end
+    end)
+    return false
+end
+
+-- Check if saved key is valid on boot (Skipped if ALWAYS_PROMPT_KEY is true)
+if not CONFIG.ALWAYS_PROMPT_KEY then
+    local savedKey = loadSavedKey()
+    if savedKey and isKeyValid(savedKey) then
+        print("[WDYM KeySystem] Valid saved key detected! Auto-logging in...")
+        launchMainScript()
+        return
+    end
+end
+
+-- ─────────────────────────────────────────────────────────────
+-- KEY SYSTEM GUI CONSTRUCTION (Metallic Dark Grey Theme)
+-- ─────────────────────────────────────────────────────────────
+-- Safe cleanup (Xeno/Solara safe, no CoreGui crash)
+pcall(function()
+    local pg = lp:FindFirstChild("PlayerGui")
+    if pg then
+        local old = pg:FindFirstChild("WDYM_KeySystem_Gui")
+        if old then old:Destroy() end
+    end
+end)
+pcall(function()
+    local old = CoreGui:FindFirstChild("WDYM_KeySystem_Gui")
+    if old then old:Destroy() end
+end)
+
+local KeyGui = Instance.new("ScreenGui")
+KeyGui.Name = "WDYM_KeySystem_Gui"
+KeyGui.ResetOnSpawn = false
+KeyGui.DisplayOrder = 999999
+KeyGui.Enabled = true
+
+-- PlayerGui FIRST — works on 100% of executors (Xeno, Solara, Volt, Wave, Delta)
+local _keyGuiParented = false
+pcall(function()
+    local pg = lp:WaitForChild("PlayerGui", 3)
+    if pg then
+        KeyGui.Parent = pg
+        _keyGuiParented = (KeyGui.Parent ~= nil)
+    end
+end)
+if not _keyGuiParented then
+    pcall(function()
+        if type(gethui) == "function" then
+            local hui = gethui()
+            if hui then KeyGui.Parent = hui; _keyGuiParented = true end
+        end
+    end)
+end
+if not _keyGuiParented then
+    pcall(function() KeyGui.Parent = CoreGui end)
+end
+
+local mainW, mainH = 400, 240
+local keyFrame = Instance.new("Frame")
+keyFrame.Name             = "KeyFrame"
+keyFrame.Size             = UDim2.new(0, mainW, 0, mainH)
+keyFrame.Position         = UDim2.new(0.5, -mainW/2, 0.5, -mainH/2)
+keyFrame.BackgroundColor3 = Color3.fromRGB(16, 17, 22)
+keyFrame.BorderSizePixel  = 0
+keyFrame.ClipsDescendants = true
+keyFrame.Active           = true
+keyFrame.Draggable        = true
+keyFrame.Parent           = KeyGui
+
+local kCorner = Instance.new("UICorner"); kCorner.CornerRadius = UDim.new(0, 8); kCorner.Parent = keyFrame
+local kStroke = Instance.new("UIStroke"); kStroke.Color = Color3.fromRGB(255, 255, 255); kStroke.Thickness = 1.5; kStroke.Parent = keyFrame
+
+-- Top White Border Accent Line
+local topLine = Instance.new("Frame")
+topLine.Size             = UDim2.new(1, 0, 0, 3)
+topLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+topLine.BorderSizePixel  = 0
+topLine.Parent           = keyFrame
+
+-- Header
+local header = Instance.new("Frame")
+header.Size             = UDim2.new(1, 0, 0, 42)
+header.Position         = UDim2.new(0, 0, 0, 3)
+header.BackgroundColor3 = Color3.fromRGB(28, 30, 38)
+header.BorderSizePixel  = 0
+header.Parent           = keyFrame
+
+local titleLbl = Instance.new("TextLabel")
+titleLbl.Size             = UDim2.new(1, -20, 1, 0)
+titleLbl.Position         = UDim2.new(0, 14, 0, 0)
+titleLbl.BackgroundTransparency = 1
+titleLbl.Text             = "WDYM HUB · KEY SYSTEM"
+titleLbl.TextColor3       = Color3.fromRGB(255, 255, 255)
+titleLbl.Font             = Enum.Font.GothamBold
+titleLbl.TextSize         = 14
+titleLbl.TextXAlignment   = Enum.TextXAlignment.Left
+titleLbl.Parent           = header
+
+local subTitle = Instance.new("TextLabel")
+subTitle.Size             = UDim2.new(1, -28, 0, 18)
+subTitle.Position         = UDim2.new(0, 14, 0, 52)
+subTitle.BackgroundTransparency = 1
+subTitle.Text             = "Please enter a valid key to access WDYM VAMP 2.0"
+subTitle.TextColor3       = Color3.fromRGB(190, 195, 205)
+subTitle.Font             = Enum.Font.GothamBold
+subTitle.TextSize         = 10
+subTitle.TextXAlignment   = Enum.TextXAlignment.Left
+subTitle.Parent           = keyFrame
+
+-- Key Input TextBox Panel
+local inputPanel = Instance.new("Frame")
+inputPanel.Size             = UDim2.new(1, -28, 0, 38)
+inputPanel.Position         = UDim2.new(0, 14, 0, 78)
+inputPanel.BackgroundColor3 = Color3.fromRGB(24, 26, 34)
+inputPanel.BorderSizePixel  = 0
+inputPanel.Parent           = keyFrame
+local ipCorner = Instance.new("UICorner"); ipCorner.CornerRadius = UDim.new(0, 6); ipCorner.Parent = inputPanel
+local ipStroke = Instance.new("UIStroke"); ipStroke.Color = Color3.fromRGB(180, 190, 210); ipStroke.Thickness = 1; ipStroke.Parent = inputPanel
+
+local keyInput = Instance.new("TextBox")
+keyInput.Size                   = UDim2.new(1, -16, 1, 0)
+keyInput.Position               = UDim2.new(0, 8, 0, 0)
+keyInput.BackgroundTransparency = 1
+keyInput.PlaceholderText        = "Enter Key Here... (e.g. WDYM-KEY-****)"
+keyInput.PlaceholderColor3      = Color3.fromRGB(130, 135, 145)
+keyInput.Text                   = ""
+keyInput.TextColor3             = Color3.fromRGB(255, 255, 255)
+keyInput.Font                   = Enum.Font.GothamBold
+keyInput.TextSize               = 11
+keyInput.ClearTextOnFocus       = false
+keyInput.Parent                 = inputPanel
+
+-- Status Message Label
+local statusLbl = Instance.new("TextLabel")
+statusLbl.Size             = UDim2.new(1, -28, 0, 16)
+statusLbl.Position         = UDim2.new(0, 14, 0, 122)
+statusLbl.BackgroundTransparency = 1
+statusLbl.Text             = "Status: Waiting for key input..."
+statusLbl.TextColor3       = Color3.fromRGB(190, 195, 205)
+statusLbl.Font             = Enum.Font.GothamBold
+statusLbl.TextSize         = 9
+statusLbl.TextXAlignment   = Enum.TextXAlignment.Left
+statusLbl.Parent           = keyFrame
+
+-- Buttons Container Row
+local btnRow = Instance.new("Frame")
+btnRow.Size             = UDim2.new(1, -28, 0, 36)
+btnRow.Position         = UDim2.new(0, 14, 0, 150)
+btnRow.BackgroundTransparency = 1
+btnRow.Parent           = keyFrame
+
+-- Submit Key Button
+local submitBtn = Instance.new("TextButton")
+submitBtn.Size             = UDim2.new(0.48, 0, 1, 0)
+submitBtn.Position         = UDim2.new(0, 0, 0, 0)
+submitBtn.BackgroundColor3 = Color3.fromRGB(34, 38, 48)
+submitBtn.BorderSizePixel  = 0
+submitBtn.Text             = "Submit Key"
+submitBtn.TextColor3       = Color3.fromRGB(255, 255, 255)
+submitBtn.Font             = Enum.Font.GothamBold
+submitBtn.TextSize         = 11
+submitBtn.Parent           = btnRow
+
+local sbC = Instance.new("UICorner"); sbC.CornerRadius = UDim.new(0, 6); sbC.Parent = submitBtn
+local sbS = Instance.new("UIStroke"); sbS.Color = Color3.fromRGB(180, 190, 210); sbS.Thickness = 1; sbS.Parent = submitBtn
+local sbG = Instance.new("UIGradient"); sbG.Rotation = 90; sbG.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(54,60,76)), ColorSequenceKeypoint.new(1, Color3.fromRGB(24,26,34))}); sbG.Parent = submitBtn
+
+-- Get Key Button
+local getKeyBtn = Instance.new("TextButton")
+getKeyBtn.Size             = UDim2.new(0.48, 0, 1, 0)
+getKeyBtn.Position         = UDim2.new(0.52, 0, 0, 0)
+getKeyBtn.BackgroundColor3 = Color3.fromRGB(28, 30, 38)
+getKeyBtn.BorderSizePixel  = 0
+getKeyBtn.Text             = "Get Key (Copy Link)"
+getKeyBtn.TextColor3       = Color3.fromRGB(255, 255, 255)
+getKeyBtn.Font             = Enum.Font.GothamBold
+getKeyBtn.TextSize         = 11
+getKeyBtn.Parent           = btnRow
+
+local gkC = Instance.new("UICorner"); gkC.CornerRadius = UDim.new(0, 6); gkC.Parent = getKeyBtn
+local gkS = Instance.new("UIStroke"); gkS.Color = Color3.fromRGB(180, 190, 210); gkS.Thickness = 1; gkS.Parent = getKeyBtn
+
+-- ─────────────────────────────────────────────────────────────
+-- BUTTON INTERACTION LOGIC
+-- ─────────────────────────────────────────────────────────────
+submitBtn.MouseButton1Click:Connect(function()
+    local userKey = keyInput.Text
+    statusLbl.Text = "Status: Verifying key..."
+    statusLbl.TextColor3 = Color3.fromRGB(220, 220, 100)
+
+    task.wait(0.2)
+
+    if isKeyValid(userKey) then
+        statusLbl.Text = "Status: Key Accepted! Launching Hub..."
+        statusLbl.TextColor3 = Color3.fromRGB(100, 240, 120)
+        saveKey(userKey)
+
+        task.spawn(function()
+            launchMainScript()
+        end)
         
-        res[idx] = string.char(bit32.lshift(c1, 2) + bit32.rshift(c2, 4))
-        idx = idx + 1
-        if s:sub(i+2,i+2) ~= '=' then
-            res[idx] = string.char(bit32.lshift(bit32.band(c2, 15), 4) + bit32.rshift(c3, 2))
-            idx = idx + 1
-        end
-        if s:sub(i+3,i+3) ~= '=' then
-            res[idx] = string.char(bit32.lshift(bit32.band(c3, 3), 6) + c4)
-            idx = idx + 1
+        TweenService:Create(keyFrame, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+            Position = UDim2.new(0.5, -mainW/2, 0.5, -mainH/2 + 30),
+            BackgroundTransparency = 1
+        }):Play()
+        task.wait(0.4)
+        pcall(function() KeyGui:Destroy() end)
+    else
+        statusLbl.Text = "Status: Invalid or Expired Key!"
+        statusLbl.TextColor3 = Color3.fromRGB(255, 80, 80)
+        
+        -- Shake effect on input box
+        local origPos = inputPanel.Position
+        for _, offset in ipairs({-6, 6, -4, 4, -2, 2, 0}) do
+            inputPanel.Position = UDim2.new(origPos.X.Scale, origPos.X.Offset + offset, origPos.Y.Scale, origPos.Y.Offset)
+            task.wait(0.03)
         end
     end
-    return table.concat(res)
-end
+end)
 
-local _src = _decode(_b64)
-local _fn, _err = (loadstring or load)(_src)
-if _fn then
-    local _ok, _execErr = pcall(_fn)
-    if not _ok then
-        warn("[WDYM Engine Runtime Error]: " .. tostring(_execErr))
-    end
-else
-    warn("[WDYM Engine Load Error]: " .. tostring(_err))
-end
+getKeyBtn.MouseButton1Click:Connect(function()
+    pcall(function()
+        if setclipboard then
+            setclipboard(CONFIG.GET_KEY_LINK)
+            statusLbl.Text = "Status: Key Link copied to clipboard!"
+            statusLbl.TextColor3 = Color3.fromRGB(100, 200, 255)
+        else
+            statusLbl.Text = "Status: Visit " .. CONFIG.GET_KEY_LINK
+            statusLbl.TextColor3 = Color3.fromRGB(190, 195, 205)
+        end
+    end)
+end)
