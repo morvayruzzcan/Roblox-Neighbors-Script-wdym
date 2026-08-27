@@ -21,14 +21,17 @@ local lp = Players.LocalPlayer
 -- CONFIGURATION
 -- ─────────────────────────────────────────────────────────────
 local CONFIG = {
-    -- 1. Online Key list URL
+    -- 1. Online Key list URL (GitHub Raw / Pastebin Unlisted / Secret Gist)
     KEYS_API_URL = "https://raw.githubusercontent.com/ruzzcan/Roblox-Neighbors-Script-wdym/main/keys.txt",
     
     -- 2. Link where users get their key (Linkvertise / Discord)
-    GET_KEY_LINK = "https://discord.gg/wdym",
+    GET_KEY_LINK = "https://discord.gg/neighborstr",
     
     -- 3. Main Script URL (Raw GitHub link to vamp.lua)
     MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/ruzzcan/Roblox-Neighbors-Script-wdym/main/vamp.lua",
+    
+    -- ALWAYS PROMPT KEY: If true, asks for key EVERY TIME script is executed (no auto-login)
+    ALWAYS_PROMPT_KEY = true,
     
     -- Fallback local saved key file name
     KEY_FILE = "WDYM_Saved_Key.txt"
@@ -36,10 +39,30 @@ local CONFIG = {
 
 -- Default fallback valid keys (if HTTP fails or testing offline)
 local HARDCODED_KEYS = {
-    ["WDYM-KEY-2026"] = true,
+    ["WDYM-KEY-2029"] = true,
     ["WDYM-VIP-8899"] = true,
     ["VAMP-KEY-FREE"] = true,
 }
+
+-- Multi-Executor Universal HTTP Fetch (Xeno, Solara, Wave, Delta, Hydrogen)
+local function fetchURL(url)
+    local content = nil
+    pcall(function()
+        content = game:HttpGet(url, true)
+    end)
+    if content and #content > 0 then return content end
+
+    local reqFn = (type(request) == "function" and request) or (type(http_request) == "function" and http_request) or (syn and type(syn.request) == "function" and syn.request)
+    if reqFn then
+        pcall(function()
+            local res = reqFn({Url = url, Method = "GET"})
+            if res and res.Body and #res.Body > 0 then
+                content = res.Body
+            end
+        end)
+    end
+    return content
+end
 
 -- ─────────────────────────────────────────────────────────────
 -- KEY VALIDATION ENGINE
@@ -51,12 +74,10 @@ local function isKeyValid(inputKey)
     -- Check local hardcoded keys first
     if HARDCODED_KEYS[inputKey] then return true end
 
-    -- Check Online API / Raw Keys File
-    local success, response = pcall(function()
-        return game:HttpGet(CONFIG.KEYS_API_URL, true)
-    end)
+    -- Check Online API / Raw Keys File via Universal HTTP Fetch
+    local response = fetchURL(CONFIG.KEYS_API_URL)
 
-    if success and response then
+    if response then
         -- Search for key line by line
         for line in response:gmatch("[^\r\n]+") do
             local cleanLine = line:gsub("%s+", "")
@@ -89,27 +110,33 @@ end
 -- LAUNCH MAIN SCRIPT
 -- ─────────────────────────────────────────────────────────────
 local function launchMainScript()
-    -- Option 1: Execute via game:HttpGet (Production)
-    local success, err = pcall(function()
-        loadstring(game:HttpGet(CONFIG.MAIN_SCRIPT_URL, true))()
-    end)
-
-    -- Option 2: Fallback if running from local file
-    if not success then
-        warn("[WDYM KeySystem] Could not fetch remote script. Running local vamp.lua fallback...")
-        pcall(function()
-            local rawCode = readfile("vamp.lua")
-            if rawCode then loadstring(rawCode)() end
-        end)
+    local scriptContent = fetchURL(CONFIG.MAIN_SCRIPT_URL)
+    if scriptContent and #scriptContent > 0 then
+        local func, err = loadstring(scriptContent)
+        if func then
+            func()
+            return
+        else
+            warn("[WDYM KeySystem] Loadstring compilation error: " .. tostring(err))
+        end
     end
+
+    -- Fallback if running from local file
+    warn("[WDYM KeySystem] Could not fetch remote script. Running local vamp.lua fallback...")
+    pcall(function()
+        local rawCode = readfile and readfile("vamp.lua")
+        if rawCode then loadstring(rawCode)() end
+    end)
 end
 
--- Check if saved key is valid on boot
-local savedKey = loadSavedKey()
-if savedKey and isKeyValid(savedKey) then
-    print("[WDYM KeySystem] Valid saved key detected! Auto-logging in...")
-    launchMainScript()
-    return
+-- Check if saved key is valid on boot (Skipped if ALWAYS_PROMPT_KEY is true)
+if not CONFIG.ALWAYS_PROMPT_KEY then
+    local savedKey = loadSavedKey()
+    if savedKey and isKeyValid(savedKey) then
+        print("[WDYM KeySystem] Valid saved key detected! Auto-logging in...")
+        launchMainScript()
+        return
+    end
 end
 
 -- ─────────────────────────────────────────────────────────────
@@ -193,7 +220,7 @@ local keyInput = Instance.new("TextBox")
 keyInput.Size                   = UDim2.new(1, -16, 1, 0)
 keyInput.Position               = UDim2.new(0, 8, 0, 0)
 keyInput.BackgroundTransparency = 1
-keyInput.PlaceholderText        = "Enter Key Here... (e.g. WDYM-KEY-2026)"
+keyInput.PlaceholderText        = "Enter Key Here... (e.g. WDYM-KEY-****)"
 keyInput.PlaceholderColor3      = Color3.fromRGB(130, 135, 145)
 keyInput.Text                   = ""
 keyInput.TextColor3             = Color3.fromRGB(255, 255, 255)

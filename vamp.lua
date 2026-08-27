@@ -806,12 +806,17 @@ local function playWingAnimation(tool)
     end
 end
 
+local flyLinearVel = nil
+local flyAlignOrient = nil
+
 local function stopFly()
     wingsActive = false
     if flyConn then flyConn:Disconnect(); flyConn = nil end
     if flyBodyGyro and flyBodyGyro.Parent then flyBodyGyro:Destroy() end
     if flyBodyVel  and flyBodyVel.Parent  then flyBodyVel:Destroy()  end
-    flyBodyGyro = nil; flyBodyVel = nil
+    if flyLinearVel and flyLinearVel.Parent then flyLinearVel:Destroy() end
+    if flyAlignOrient and flyAlignOrient.Parent then flyAlignOrient:Destroy() end
+    flyBodyGyro = nil; flyBodyVel = nil; flyLinearVel = nil; flyAlignOrient = nil
     stopWingAnim()
     detachWingsFromBack()
     local ch = getChar()
@@ -828,6 +833,7 @@ local function startFly(tool)
     local hum = ch:FindFirstChildOfClass("Humanoid")
     if not hrp or not hum then return end
 
+    stopFly()
     wingsActive = true
 
     -- Attach tool or 3D visual wings to back
@@ -840,33 +846,24 @@ local function startFly(tool)
     -- Play flying animation
     task.spawn(playWingAnimation, tool)
 
-    wingsActive = true
-
-    -- Move wings to back
-    if tool then attachHandleToBack(tool) end
-
-    -- Play wing animation
-    task.spawn(playWingAnimation, tool)
-
-    -- BodyGyro keeps us upright while flying
+    -- BodyGyro / BodyVelocity (Universal compatibility)
     local bg = Instance.new("BodyGyro")
-    bg.D = 9999; bg.P = 200000; bg.MaxTorque = Vector3.new(1e6,1e6,1e6)
+    bg.D = 9999; bg.P = 200000; bg.MaxTorque = Vector3.new(1e8,1e8,1e8)
     bg.CFrame = hrp.CFrame; bg.Parent = hrp
     flyBodyGyro = bg
 
-    -- BodyVelocity drives movement
     local bv = Instance.new("BodyVelocity")
     bv.Velocity  = Vector3.zero
-    bv.MaxForce  = Vector3.new(1e6, 1e6, 1e6)
+    bv.MaxForce  = Vector3.new(1e8, 1e8, 1e8)
     bv.P = 50000; bv.Parent = hrp
     flyBodyVel = bv
 
-    local SPEED = 40
+    local SPEED = 45
 
     flyConn = RunService.Heartbeat:Connect(function()
         if not wingsActive then stopFly(); return end
         local cam = workspace.CurrentCamera
-        if not cam or not hrp.Parent then stopFly(); return end
+        if not (cam and hrp and hrp.Parent and hum and hum.Parent) then stopFly(); return end
 
         local cf  = cam.CFrame
         local vel = Vector3.zero
@@ -877,10 +874,13 @@ local function startFly(tool)
         if UserInput:IsKeyDown(Enum.KeyCode.Space)      then vel = vel + Vector3.new(0,1,0) end
         if UserInput:IsKeyDown(Enum.KeyCode.LeftShift)  then vel = vel - Vector3.new(0,1,0) end
 
-        vel = vel.Unit == vel.Unit and vel.Unit * SPEED or Vector3.zero
+        if vel.Magnitude > 0 then
+            vel = vel.Unit * SPEED
+        end
+
         bv.Velocity = vel
-        bg.CFrame   = hrp.CFrame
-        pcall(function() hum.PlatformStand = (vel.Magnitude > 0) end)
+        bg.CFrame   = cf
+        pcall(function() hum.PlatformStand = true end)
     end)
 end
 
